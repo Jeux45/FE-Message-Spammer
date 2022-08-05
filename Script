@@ -1,0 +1,317 @@
+_G.Spam = {
+	Spamming = false;
+}
+
+local Message_Spammer = Instance.new("ScreenGui")
+local Main = Instance.new("Frame")
+local Message = Instance.new("TextBox")
+local UICorner = Instance.new("UICorner")
+local Toggle = Instance.new("Frame")
+local Label = Instance.new("TextLabel")
+local Toggle_2 = Instance.new("Frame")
+local UICorner_2 = Instance.new("UICorner")
+local Activated = Instance.new("Frame")
+local UICorner_3 = Instance.new("UICorner")
+local Disabled = Instance.new("Frame")
+local UICorner_4 = Instance.new("UICorner")
+local Hitbox = Instance.new("TextButton")
+local Panel = Instance.new("Frame")
+local Label_2 = Instance.new("TextLabel")
+local Close = Instance.new("TextButton")
+local UICorner_5 = Instance.new("UICorner")
+local Minimize = Instance.new("TextButton")
+local UICorner_6 = Instance.new("UICorner")
+local UICorner_7 = Instance.new("UICorner")
+local Credits = Instance.new("TextButton")
+local Credits_2 = Instance.new("Frame")
+local UICorner_8 = Instance.new("UICorner")
+local Panel_2 = Instance.new("Frame")
+local UICorner_9 = Instance.new("UICorner")
+local Label_3 = Instance.new("TextLabel")
+local Close_2 = Instance.new("TextButton")
+local UICorner_10 = Instance.new("UICorner")
+local Minimize_2 = Instance.new("TextButton")
+local UICorner_11 = Instance.new("UICorner")
+local ScriptBy = Instance.new("TextLabel")
+local UICorner_12 = Instance.new("UICorner")
+local UIBy = Instance.new("TextLabel")
+local UICorner_13 = Instance.new("UICorner")
+
+--Properties:
+
+Message_Spammer.Name = "Message_Spammer"
+Message_Spammer.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+Message_Spammer.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+Main.Name = "Main"
+Main.Parent = Message_Spammer
+Main.BackgroundColor3 = Color3.fromRGB(52, 52, 52)
+Main.Position = UDim2.new(0.526997864, 0, 0.450549424, 0)
+Main.Size = UDim2.new(0, 210, 0, 260)
+Main.Active = true
+Main.Draggable = true
+
+Message.Name = "Message"
+Message.Parent = Main
+Message.BackgroundColor3 = Color3.fromRGB(83, 83, 83)
+Message.Position = UDim2.new(0.0238095243, 0, 0.20769231, 0)
+Message.Size = UDim2.new(0, 200, 0, 121)
+Message.Font = Enum.Font.SourceSans
+Message.PlaceholderText = "Message Here..."
+Message.Text = ""
+Message.TextColor3 = Color3.fromRGB(0, 0, 0)
+Message.TextScaled = true
+Message.TextSize = 14.000
+Message.TextWrapped = true
+
+UICorner.Parent = Main
+
+Toggle.Name = "Toggle"
+Toggle.Parent = Main
+Toggle.BackgroundColor3 = Color3.fromRGB(71, 71, 71)
+Toggle.Position = UDim2.new(0.0238095243, 0, 0.699999988, 0)
+Toggle.Size = UDim2.new(0, 200, 0, 46)
+
+Label.Name = "Label"
+Label.Parent = Toggle
+Label.BackgroundColor3 = Color3.fromRGB(79, 79, 79)
+Label.BackgroundTransparency = 1.000
+Label.Position = UDim2.new(0, 0, 0.0652173907, 0)
+Label.Size = UDim2.new(0, 121, 0, 41)
+Label.Font = Enum.Font.SourceSans
+Label.Text = "Spam Message"
+Label.TextColor3 = Color3.fromRGB(255, 255, 255)
+Label.TextScaled = true
+Label.TextSize = 14.000
+Label.TextWrapped = true
+
+Toggle_2.Name = "Toggle"
+Toggle_2.Parent = Toggle
+Toggle_2.BackgroundColor3 = Color3.fromRGB(57, 57, 57)
+Toggle_2.Position = UDim2.new(0.63499999, 0, 0.173913717, 0)
+Toggle_2.Size = UDim2.new(0, 66, 0, 30)
+
+UICorner_2.Parent = Toggle_2
+
+Activated.Name = "Activated"
+Activated.Parent = Toggle_2
+Activated.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+Activated.Position = UDim2.new(0, 0, 0.100000009, 0)
+Activated.Size = UDim2.new(0, 32, 0, 23)
+Activated.Visible = false
+
+UICorner_3.Parent = Activated
+
+Disabled.Name = "Disabled"
+Disabled.Parent = Toggle_2
+Disabled.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+Disabled.Position = UDim2.new(0.484848499, 0, 0.100000009, 0)
+Disabled.Size = UDim2.new(0, 32, 0, 23)
+
+UICorner_4.Parent = Disabled
+
+Hitbox.Name = "Hitbox"
+Hitbox.Parent = Toggle_2
+Hitbox.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Hitbox.BackgroundTransparency = 1.000
+Hitbox.Size = UDim2.new(0, 64, 0, 30)
+Hitbox.Font = Enum.Font.SourceSans
+Hitbox.Text = " "
+Hitbox.TextColor3 = Color3.fromRGB(0, 0, 0)
+Hitbox.TextSize = 14.000
+Hitbox.MouseButton1Down:Connect(function()
+	if Disabled.Visible == true then
+		Disabled.Visible = false
+		Activated.Visible = true
+		_G.Spam.Spamming = true
+
+		while _G.Spam.Spamming == true do
+			game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(Message.Text,"All")
+			wait()
+		end
+	else
+		Activated.Visible = false
+		Disabled.Visible = true
+		_G.Spam.Spamming = false
+
+		while _G.Spam.Spamming == true do
+			game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(Message.Text,"All")
+			wait()
+		end
+	end
+end)
+
+Panel.Name = "Panel"
+Panel.Parent = Main
+Panel.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+Panel.Position = UDim2.new(-0.00157356262, 0, -0.00102040172, 0)
+Panel.Size = UDim2.new(0, 210, 0, 39)
+
+Label_2.Name = "Label"
+Label_2.Parent = Panel
+Label_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Label_2.BackgroundTransparency = 1.000
+Label_2.Size = UDim2.new(0, 144, 0, 39)
+Label_2.Font = Enum.Font.SourceSans
+Label_2.Text = "FE Message Spammer"
+Label_2.TextColor3 = Color3.fromRGB(255, 255, 255)
+Label_2.TextScaled = true
+Label_2.TextSize = 14.000
+Label_2.TextWrapped = true
+
+Close.Name = "Close"
+Close.Parent = Panel
+Close.BackgroundColor3 = Color3.fromRGB(72, 72, 72)
+Close.Position = UDim2.new(0.842857122, 0, 0.0769230798, 0)
+Close.Size = UDim2.new(0, 33, 0, 32)
+Close.Text = "X"
+Close.TextColor3 = Color3.fromRGB(255, 0, 0)
+Close.TextScaled = true
+Close.TextSize = 14.000
+Close.TextWrapped = true
+Close.MouseButton1Down:Connect(function()
+	Main:Destroy()
+end)
+
+UICorner_5.Parent = Close
+
+Minimize.Name = "Minimize"
+Minimize.Parent = Panel
+Minimize.BackgroundColor3 = Color3.fromRGB(72, 72, 72)
+Minimize.Position = UDim2.new(0.685714245, 0, 0.0769230798, 0)
+Minimize.Size = UDim2.new(0, 33, 0, 32)
+Minimize.Text = "-"
+Minimize.TextColor3 = Color3.fromRGB(255, 255, 255)
+Minimize.TextScaled = true
+Minimize.TextSize = 14.000
+Minimize.TextWrapped = true
+Minimize.MouseButton1Down:Connect(function()
+	if Main.Transparency == 0 then
+		Main.Transparency = 1
+		Toggle.Visible = false
+		Message.Visible = false
+		Credits.Visible = false
+	else
+		Main.Transparency = 0
+		Toggle.Visible = true
+		Message.Visible = true
+		Credits.Visible = true
+	end
+end)
+
+UICorner_6.Parent = Minimize
+
+UICorner_7.Parent = Panel
+
+Credits.Name = "Credits"
+Credits.Parent = Main
+Credits.BackgroundColor3 = Color3.fromRGB(85, 85, 85)
+Credits.Position = UDim2.new(0.0238095243, 0, 0.907692432, 0)
+Credits.Size = UDim2.new(0, 200, 0, 18)
+Credits.Font = Enum.Font.SourceSans
+Credits.Text = "Credits"
+Credits.TextColor3 = Color3.fromRGB(255, 255, 255)
+Credits.TextScaled = true
+Credits.TextSize = 14.000
+Credits.TextWrapped = true
+Credits.MouseButton1Down:Connect(function()
+	Credits_2.Visible = true
+end)
+
+Credits_2.Name = "Credits"
+Credits_2.Parent = Message_Spammer
+Credits_2.BackgroundColor3 = Color3.fromRGB(66, 66, 66)
+Credits_2.Position = UDim2.new(0.153347731, 0, 0.364207208, 0)
+Credits_2.Size = UDim2.new(0, 180, 0, 152)
+Credits_2.Visible = false
+Credits_2.Active = true
+Credits_2.Draggable = true
+
+UICorner_8.Parent = Credits_2
+
+Panel_2.Name = "Panel"
+Panel_2.Parent = Credits_2
+Panel_2.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+Panel_2.Size = UDim2.new(0, 180, 0, 39)
+
+UICorner_9.Parent = Panel_2
+
+Label_3.Name = "Label"
+Label_3.Parent = Panel_2
+Label_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Label_3.BackgroundTransparency = 1.000
+Label_3.Size = UDim2.new(0, 102, 0, 36)
+Label_3.Font = Enum.Font.SourceSans
+Label_3.Text = "Credits"
+Label_3.TextColor3 = Color3.fromRGB(255, 255, 255)
+Label_3.TextScaled = true
+Label_3.TextSize = 14.000
+Label_3.TextWrapped = true
+
+Close_2.Name = "Close"
+Close_2.Parent = Panel_2
+Close_2.BackgroundColor3 = Color3.fromRGB(72, 72, 72)
+Close_2.Position = UDim2.new(0.815079391, 0, 0.104700863, 0)
+Close_2.Size = UDim2.new(0, 33, 0, 32)
+Close_2.Text = "X"
+Close_2.TextColor3 = Color3.fromRGB(255, 0, 0)
+Close_2.TextScaled = true
+Close_2.TextSize = 14.000
+Close_2.TextWrapped = true
+Close_2.MouseButton1Down:Connect(function()
+	Credits_2.Visible = false
+end)
+
+UICorner_10.Parent = Close_2
+
+Minimize_2.Name = "Minimize"
+Minimize_2.Parent = Panel_2
+Minimize_2.BackgroundColor3 = Color3.fromRGB(72, 72, 72)
+Minimize_2.Position = UDim2.new(0.631746054, 0, 0.104700863, 0)
+Minimize_2.Size = UDim2.new(0, 33, 0, 32)
+Minimize_2.Text = "-"
+Minimize_2.TextColor3 = Color3.fromRGB(255, 255, 255)
+Minimize_2.TextScaled = true
+Minimize_2.TextSize = 14.000
+Minimize_2.TextWrapped = true
+Minimize_2.MouseButton1Down:Connect(function()
+	if Credits_2.Transparency == 0 then
+		Credits_2.Transparency = 1
+		ScriptBy.Visible = false
+		UIBy.Visible = false
+	else
+		Credits_2.Transparency = 0
+		ScriptBy.Visible = true
+		UIBy.Visible = true
+	end
+end)
+
+UICorner_11.Parent = Minimize_2
+
+ScriptBy.Name = "ScriptBy"
+ScriptBy.Parent = Credits_2
+ScriptBy.BackgroundColor3 = Color3.fromRGB(106, 106, 106)
+ScriptBy.Position = UDim2.new(0.0333333313, 0, 0.308343828, 0)
+ScriptBy.Size = UDim2.new(0, 168, 0, 36)
+ScriptBy.Font = Enum.Font.Ubuntu
+ScriptBy.Text = "Script Made By Jeux#6662"
+ScriptBy.TextColor3 = Color3.fromRGB(255, 255, 255)
+ScriptBy.TextScaled = true
+ScriptBy.TextSize = 14.000
+ScriptBy.TextWrapped = true
+
+UICorner_12.Parent = ScriptBy
+
+UIBy.Name = "UIBy"
+UIBy.Parent = Credits_2
+UIBy.BackgroundColor3 = Color3.fromRGB(106, 106, 106)
+UIBy.Position = UDim2.new(0.0333333313, 0, 0.616096735, 0)
+UIBy.Size = UDim2.new(0, 168, 0, 36)
+UIBy.Font = Enum.Font.Ubuntu
+UIBy.Text = "GUI Made By Jeux#6662"
+UIBy.TextColor3 = Color3.fromRGB(255, 255, 255)
+UIBy.TextScaled = true
+UIBy.TextSize = 14.000
+UIBy.TextWrapped = true
+
+UICorner_13.Parent = UIBy
